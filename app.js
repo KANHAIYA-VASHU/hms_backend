@@ -12,10 +12,13 @@ import appointmentRouter from "./router/appointmentRouter.js";
 const app = express();
 config({ path: "./config.env" });
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  next();
-});
+app.use(
+  cors({
+    origin: ["https://hms-user-kanhaiya-vashus-projects.vercel.app/", process.env.FRONTEND_URL_TWO],
+    method: ["GET", "POST", "DELETE", "PUT"],
+    credentials: true,
+  })
+);
 
 app.use(cookieParser());
 app.use(express.json());
