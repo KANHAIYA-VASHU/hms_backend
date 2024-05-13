@@ -12,11 +12,10 @@ import appointmentRouter from "./router/appointmentRouter.js";
 const app = express();
 config({ path: "./config.env" });
 
-app.use(cors({
-  origin: true,
-  methods: ["GET", "POST", "DELETE", "PUT"],
-  credentials: true
-}));
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
 
 app.use(cookieParser());
 app.use(express.json());
