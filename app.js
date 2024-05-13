@@ -26,6 +26,7 @@ app.use(cors({
   methods: ["GET", "POST", "DELETE", "PUT"],
   credentials: true // Allow credentials from the client side
 }));
+app.options('*', cors());
 
 app.use(cookieParser());
 app.use(express.json());
